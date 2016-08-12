@@ -21,13 +21,20 @@ class ApiCall(object):
         resp = requests.get(request + item + return_format + self.apiKey)
 
         self.data = resp.json()
+        self.reviews = {}
 
+    # retrive first 10 recommendations productID
     def recommendations(self):
         first_item = '&itemId=' + str(self.data['items'][0]['itemId'])
         recommend_request = 'http://api.walmartlabs.com/v1/nbp?' + self.apiKey + first_item
         recommendation_resp = requests.get(recommend_request)
         recommendations = recommendation_resp.json()
-        print recommendations[0]['name']
+        for i in range(11):
+            self.reviews[str(recommendations[i]['itemId'])] = null 
+        print self.reviews
+
+    def reviews(self):
+        
 
 
 test = ApiCall()
