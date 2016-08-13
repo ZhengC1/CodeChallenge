@@ -27,23 +27,29 @@ class ApiCall(object):
 
     # retrive first 10 recommendations productID
     def recommendations(self):
+
         first_item = '&itemId=' + str(self.data['items'][0]['itemId'])
         recommend_request = self.recommendation_request + self.apiKey + first_item
         recommendation_resp = requests.get(recommend_request)
-        recommendations = recommendation_resp.json()
+        self.recommendations = recommendation_resp.json()
         for i in range(11):
-            self.reviews[str(recommendations[i]['itemId'])] = null
+            self.reviews[str(self.recommendations[i]['itemId'])] = i
         print self.reviews
 
-    def reviews(self):
+    def review(self):
+
         # http://api.walmartlabs.com/v1/reviews/53317526?format=json&apiKey=
-        #for i in self.reviews:
-        reviews_resp = requests.get(self.reviews_request + self.reviews[str(recommendations[i]['itemId'])] + '?' + self.apiKey
-        reviews_json = reviews_resp.json()
-            # self.reviews[str(recommendations[i]['itemId'])] = self.reviews_request
-        print reviews_json
+        for key in self.reviews:
+            print "key: %s, value: %s" % (str(key), str(self.reviews[key]))
+            reviews_resp = requests.get(self.reviews_request + str(key) + '?' + self.apiKey)
+            reviews_json = reviews_resp.json()
+            self.reviews[key] = reviews_json['reviews']['reviewStatistics']['averageOverallRating']
+        print self.reviews
+
+    def sort_review(self):
+        print sorted(self.reviews)
 
 
 test = ApiCall()
 test.recommendations()
-test.reviews()
+test.review()
