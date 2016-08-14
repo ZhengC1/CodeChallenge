@@ -34,7 +34,7 @@ Uses PEP8 for python Style
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Chun Zheng** - *Other projects* - [ZhengC1](https://github.com/ZhengC1?tab=repositories)
 
 ## Acknowledgments
 
