@@ -1,6 +1,10 @@
-# Project Title
+# Walmart Code Challenge
 
-One Paragraph of project description goes here
+Using technologies of your choice, develop a simple program to rank-order Walmart product recommendations based upon customer reviews.The program should invoke the Walmart Labs Open API to implement the following workflow:  
+Search for products based upon a user-provided search string  
+Use the first item in the search response as input for a product recommendation search  
+Retrieve reviews of the first 10 product recommendationsRank  
+order the recommended products based upon the review sentiments  
 
 ## Getting Started
 
@@ -68,7 +72,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
