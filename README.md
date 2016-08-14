@@ -1,10 +1,11 @@
 # Walmart Code Challenge
 
 Using technologies of your choice, develop a simple program to rank-order Walmart product recommendations based upon customer reviews.The program should invoke the Walmart Labs Open API to implement the following workflow:
-*Search for products based upon a user-provided search string
-*Use the first item in the search response as input for a product recommendation search
-*Retrieve reviews of the first 10 product recommendationsRank
-*order the recommended products based upon the review sentiments
+
+* Search for products based upon a user-provided search string
+* Use the first item in the search response as input for a product recommendation search
+* Retrieve reviews of the first 10 product recommendationsRank
+* order the recommended products based upon the review sentiments
 
 ## Getting Started
 
