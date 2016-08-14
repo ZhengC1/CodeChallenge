@@ -39,5 +39,5 @@ Uses PEP8 for python Style
 
 ## Acknowledgments
 
-* Thank you to all the amazing programmers who made this possible - I.E. ME :D
+* Thank you to all the programmers who made this possible - I.E. ME :D
 * Thank you Walmart for making an API
