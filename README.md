@@ -1,6 +1,7 @@
 # Walmart Code Challenge
 
-Using technologies of your choice, develop a simple program to rank-order Walmart product recommendations based upon customer reviews.The program should invoke the Walmart Labs Open API to implement the following workflow:
+Using technologies of your choice, develop a simple program to rank-order Walmart product recommendations based upon customer reviews.  
+The program should invoke the Walmart Labs Open API to implement the following workflow:
 
 * Search for products based upon a user-provided search string
 * Use the first item in the search response as input for a product recommendation search
@@ -22,8 +23,13 @@ $python CodeChallenge.py
 
 ### Testing
 ```
-For this project, i would have preferred even a mock json file of customers and their purchases so that i could see to what percentage my recommendations aligned with their product purchases
+For this project, i would have preferred even a mock json file of customers and  
+their purchases so that i could see to what percentage my recommendations aligned  
+with their product purchases
+
 The Test.py file is essentially the CodeChallenge.py file but much wordier and prints out multiple reviews
+
+$python Test.py
 ```
 
 ### Prerequisities
@@ -64,4 +70,3 @@ Uses PEP8 for python Style
 * Thank you Walmart for making an API
 
 [![Chun Zheng](http://www.gravatar.com/avatar/c439eea642425448f34f8ea49833a76e?s=144)](http://student.cs.appstate.edu/zhengc1)
-[Chun Zheng](http://student.cs.appstate.edu/zhengc1)
