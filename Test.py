@@ -1,10 +1,12 @@
 # !user/bin/python
+# -*- coding: utf-8 -*
 
 # Author: Chun Zheng
-# Name: Walmart Code Challenge
+# Name: Test File
 # Lang: python 2.7
-# @([O.O])@ codemonkey for encouragement
+# (╯°□°）╯︵ ┻━┻ table flipping emoji for sanity
 
+import re
 import json
 import pprint
 import requests
@@ -35,11 +37,13 @@ class test(object):
 
         # data for the item
         self.data = resp.json()
+        self.products = {}
         self.reviews = {}
+        self.sentiment_review = {}
+        self.answer = {}
 
     # retrive first 10 recommendations productID
     def recommendations(self):
-
         # take the first item from the search to build the URI
         first_item = '&itemId=' + str(self.data['items'][0]['itemId'])
         recommend_request = self.recommendation_request + self.apiKey + first_item
@@ -51,25 +55,42 @@ class test(object):
         self.recommendations = recommendation_resp.json()
         for i in range(11):
             self.reviews[str(self.recommendations[i]['itemId'])] = self.recommendations[i]['name']
+            self.products[str(self.recommendations[i]['itemId'])] = self.recommendations[i]['name']
         print '\n Recommendations'
         print '------------------------------------------------------------------------------'
-        pprint.pprint(self.reviews)
+        pprint.pprint(self.products)
         print '------------------------------------------------------------------------------'
 
-    def overall_rating_review(self):
+    def review_text(self):
 
         # prints the overall ratings for the initial recommendations
         for key in self.reviews:
-            print "key: %s, value: %s" % (str(key), str(self.reviews[key]))
+            # Review API URI
             reviews_resp = requests.get(self.reviews_request + str(key) + '?' + self.apiKey)
             reviews_json = reviews_resp.json()
-            self.reviews[key] = reviews_json['reviews'][0]['overallRating']['rating']
-        print self.reviews
+
+            # Long string containing first 5 reviews (if they exist)
+            review = ''
+            for i in range(5):
+               review = review + reviews_json['reviews'][i]['reviewText']
+            self.reviews[key] = review
+            print "key: %s , review: %s \n" % (key, review)
 
     def sentiment_analysis(self):
-        print sorted(self.reviews)
+        for key in self.reviews:
+            string = self.reviews[key]
+            text = re.sub(r'[^\w]', ' ', string)
+            req = requests.post("http://text-processing.com/api/sentiment/", data={'text': text})
+            sentiment_json = req.json()
+            self.sentiment_review[key] = sentiment_json['probability']['pos']
+            self.answer[self.products[key]] = sentiment_json['probability']['pos'] 
 
+    def print_recommendations(self):
+        for key, value in sorted(self.answer.iteritems(), key=lambda (k,v): (v,k), reverse=True):
+            print "Name: %s | Pos Rating: %s" %(key, self.answer[key])
 
 test = test()
 test.recommendations()
-test.overall_rating_review()
+test.review_text()
+test.sentiment_analysis()
+test.print_recommendations()

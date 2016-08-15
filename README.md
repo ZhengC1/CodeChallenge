@@ -29,13 +29,24 @@ Uses PEP8 for python Style
 ## Built With
 
 * Walmart Open API
+* Natural Language Sentiment Analysis API
 * Ubuntu 16.04
-* Xterm - Terminal
+* Gnome-Terminal
 * VIM - Visual Improved
+
+## Assumptions for this Project
+
+```
+* assuming that "ordering the products based on review sentiment means sentiment analysis of reviews
+* Using the first 5 reviews for each product
+
+```
 
 ## Authors
 
 * **Chun Zheng** - *Other projects* - [ZhengC1](https://github.com/ZhengC1?tab=repositories)
+* **Chun Zheng** - *Manual Implementation of Sentiment Analysis with Twitters API and NODEjs* - [ZhengC1](https://github.com/ZhengC1/site_bias)
+
 
 ## Acknowledgments
 
