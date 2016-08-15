@@ -7,6 +7,8 @@
 # (╯°□°）╯︵ ┻━┻ table flipping emoji for sanity
 
 import re
+import sys
+import time
 import json
 import pprint
 import requests
@@ -81,14 +83,6 @@ class CodeChallenge(object):
     def print_recommendations(self):
         for key, value in sorted(self.answer.iteritems(), key=lambda (k,v): (v,k), reverse=True):
             print "Name: %s | Pos Rating: %s" %(key, self.answer[key])
-
-    import itertools, sys
-    spinner = itertools.cycle(['-', '/', '|', '\\'])
-    while True:
-        sys.stdout.write(spinner.next())  # write the next character
-        sys.stdout.flush()                # flush stdout buffer (actual character display)
-        sys.stdout.write('\b')            # erase the last written char
-
 
 CodeChallenge = CodeChallenge()
 CodeChallenge.recommendations()
