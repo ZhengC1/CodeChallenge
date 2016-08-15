@@ -7,12 +7,23 @@ Using technologies of your choice, develop a simple program to rank-order Walmar
 * Retrieve reviews of the first 10 product recommendationsRank
 * order the recommended products based upon the review sentiments
 
-## Getting Started
+## Install
 
 ```
-Clone or download the zip
-type 'python CodeChallenge.py' to execute
+$git clone https://github.com/ZhengC1/CodeChallenge.git
+or
+download the zip
+```
 
+### Usage
+```
+$python CodeChallenge.py
+```
+
+### Testing
+```
+For this project, i would have preferred even a mock json file of customers and their purchases so that i could see to what percentage my recommendations aligned with their product purchases
+The Test.py file is essentially the CodeChallenge.py file but much wordier and prints out multiple reviews
 ```
 
 ### Prerequisities
@@ -39,13 +50,12 @@ Uses PEP8 for python Style
 ```
 * assuming that "ordering the products based on review sentiment means sentiment analysis of reviews
 * Using the first 5 reviews for each product
-
 ```
 
 ## Authors
 
 * **Chun Zheng** - *Other projects* - [ZhengC1](https://github.com/ZhengC1?tab=repositories)
-* **Chun Zheng** - *Manual Implementation of Sentiment Analysis with Twitters API and NODEjs* - [ZhengC1](https://github.com/ZhengC1/site_bias)
+* **Chun Zheng** - *Manual Implementation of Sentiment Analysis with Twitters API and NODEjs* - [AppHack7](https://github.com/ZhengC1/site_bias)
 
 
 ## Acknowledgments
