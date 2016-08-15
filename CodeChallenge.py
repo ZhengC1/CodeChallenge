@@ -9,18 +9,28 @@ import json
 import requests
 
 
-class ApiCall(object):
+class CodeChallenge(object):
 
     def __init__(self):
 
-        request = 'http://api.walmartlabs.com/v1/search?query='
+        # promt user the search itemk
+        search = raw_input('What would you like to search: ')
+        # replace the spaces in the search input with '+' for the query string
+        item = search.replace(' ', '+')
+
+        # global api key
+        self.apiKey = '&apiKey=9s7yx3b5sxchpmb8szzefu9x'
+        # desired format
+        return_format = '&format=json'
+
+        # request url
+        search_request = 'http://api.walmartlabs.com/v1/search?query=' + item + return_format + self.apiKey
         self.reviews_request = 'http://api.walmartlabs.com/v1/reviews/'
         self.recommendation_request = 'http://api.walmartlabs.com/v1/nbp?'
-        search = raw_input('What would you like to search: ')
-        item = search.replace(' ', '+')
-        return_format = '&format=json'
-        self.apiKey = '&apiKey=9s7yx3b5sxchpmb8szzefu9x'
-        resp = requests.get(request + item + return_format + self.apiKey)
+
+        # requested format from walmart
+        print search_request
+        resp = requests.get(search_request)
 
         self.data = resp.json()
         self.reviews = {}
@@ -50,6 +60,6 @@ class ApiCall(object):
         print sorted(self.reviews)
 
 
-test = ApiCall()
+test = CodeChallenge()
 test.recommendations()
 test.review()
