@@ -64,3 +64,4 @@ Uses PEP8 for python Style
 * Thank you Walmart for making an API
 
 [![Chun Zheng](http://www.gravatar.com/avatar/c439eea642425448f34f8ea49833a76e?s=144)](http://student.cs.appstate.edu/zhengc1)
+[Chun Zheng](http://student.cs.appstate.edu/zhengc1)
