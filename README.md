@@ -18,6 +18,8 @@ download the zip
 
 ### Usage
 ```
+The Sentiment Analysis will take about 20 to 30 seconds
+
 $python CodeChallenge.py
 ```
 
