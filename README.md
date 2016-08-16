@@ -5,8 +5,8 @@ The program should invoke the Walmart Labs Open API to implement the following w
 
 * Search for products based upon a user-provided search string
 * Use the first item in the search response as input for a product recommendation search
-* Retrieve reviews of the first 10 product recommendationsRank
-* order the recommended products based upon the review sentiments
+* Retrieve reviews of the first 10 product recommendations
+* Rank order the recommended products based upon the review sentiments
 
 ## Install
 
@@ -62,8 +62,9 @@ Uses PEP8 for python Style
 
 ## Authors
 
-* **Chun Zheng** - *Other projects* - [ZhengC1](https://github.com/ZhengC1?tab=repositories)
-* **Chun Zheng** - *Manual Implementation of Sentiment Analysis with Twitters API and NODEjs* - [AppHack7](https://github.com/ZhengC1/site_bias)
+* **Chun Zheng** - 
+ * *Other projects* - [ZhengC1](https://github.com/ZhengC1?tab=repositories)
+ * *Manual Implementation of Sentiment Analysis with Twitters API and NODEjs* - [AppHack7](https://github.com/ZhengC1/site_bias)
 
 
 ## Acknowledgments
