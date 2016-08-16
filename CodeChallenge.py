@@ -38,6 +38,7 @@ class CodeChallenge(object):
 
         # data for the item
         self.data = resp.json()
+        print "\nItem: %s \n" % self.data['items'][0]['name']
         self.products = {}
         self.reviews = {}
         self.sentiment_review = {}
@@ -81,6 +82,7 @@ class CodeChallenge(object):
             self.answer[self.products[key]] = sentiment_json['probability']['pos'] 
 
     def print_recommendations(self):
+        print "Recommendations associated with your product: \n"
         for key, value in sorted(self.answer.iteritems(), key=lambda (k,v): (v,k), reverse=True):
             print "Name: %s | Pos Rating: %s" %(key, self.answer[key])
 
