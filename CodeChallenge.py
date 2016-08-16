@@ -84,7 +84,7 @@ class CodeChallenge(object):
     def print_recommendations(self):
         print "Recommendations associated with your product: \n"
         for key, value in sorted(self.answer.iteritems(), key=lambda (k,v): (v,k), reverse=True):
-            print "Name: %s | Pos Rating: %s" %(key, self.answer[key])
+            print "     Name: %s | Pos Rating: %s" %(key, self.answer[key])
 
 CodeChallenge = CodeChallenge()
 CodeChallenge.recommendations()
