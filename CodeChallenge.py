@@ -70,10 +70,12 @@ class CodeChallenge(object):
         # recommendations in json form
         self.recommendations = recommendation_resp.json()
         for i in range(11):
-            # storing the recommendations itemId with the name for review_text method
-            # i could have just initialized the self.review with None tbh but it could be
-            # useful later
-            # and then storing the recommendations with teh name for sentiment method
+            # storing the recommendations itemId with the name
+            # for review_text method
+            # i could have just initialized the self.review
+            # with None tbh but it could be useful later
+            # and then storing the recommendations
+            # with th name for sentiment method
             self.reviews[str(self.recommendations[i]['itemId'])] = (
                 self.recommendations[i]['name']
             )
