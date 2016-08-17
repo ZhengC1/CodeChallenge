@@ -53,8 +53,13 @@ class CodeChallenge(object):
         # Recommendation API URI
         recommendation_resp = requests.get(recommend_request)
 
+        # recommendations in json form
         self.recommendations = recommendation_resp.json()
         for i in range(11):
+            # storing the recommendations itemId with the name for review_text method
+            # i could have just initialized the self.review with None tbh but it could be
+            # useful later
+            # and then storing the recommendations with teh name for sentiment method
             self.reviews[str(self.recommendations[i]['itemId'])] = self.recommendations[i]['name']
             self.products[str(self.recommendations[i]['itemId'])] = self.recommendations[i]['name']
 
@@ -69,20 +74,30 @@ class CodeChallenge(object):
             # Long string containing first 5 reviews (if they exist)
             review = ''
             for i in range(5):
+               # concatentating the review
                review = review + reviews_json['reviews'][i]['reviewText']
+            # storing each string with asocciated concatenated review
             self.reviews[key] = review
 
     def sentiment_analysis(self):
         for key in self.reviews:
             string = self.reviews[key]
+            # replace all the unnecessary characters with space
+            # to be extra paranoid
             text = re.sub(r'[^\w]', ' ', string)
+
+            # makes a post request to the natural language open API
             req = requests.post("http://text-processing.com/api/sentiment/", data={'text': text})
             sentiment_json = req.json()
+
+            # attains the number value for each review of cumulative reviews
             self.sentiment_review[key] = sentiment_json['probability']['pos']
-            self.answer[self.products[key]] = sentiment_json['probability']['pos'] 
+            self.answer[self.products[key]] = sentiment_json['probability']['pos']
 
     def print_recommendations(self):
         print "Recommendations associated with your product: \n"
+        # prints in reverse order from largest to smallest positive
+        # sentiment review
         for key, value in sorted(self.answer.iteritems(), key=lambda (k,v): (v,k), reverse=True):
             print "     Name: %s | Pos Rating: %s" %(key, self.answer[key])
 
