@@ -30,8 +30,12 @@ class CodeChallenge(object):
         return_format = '&format=json'
 
         # request url
-        search_request = 'http://api.walmartlabs.com/v1/search?query='
-        + item + return_format + self.apiKey
+        search_request = (
+            'http://api.walmartlabs.com/v1/search?query=' +
+            item +
+            return_format +
+            self.apiKey
+        )
 
         self.reviews_request = 'http://api.walmartlabs.com/v1/reviews/'
         self.recommendation_request = 'http://api.walmartlabs.com/v1/nbp?'
@@ -51,19 +55,24 @@ class CodeChallenge(object):
         # take the first item from the search to build the URI
         first_item = '&itemId=' + str(self.data['items'][0]['itemId'])
 
-        recommend_request = self.recommendation_request
-        + self.apiKey + first_item
+        recommend_request = (
+            self.recommendation_request +
+            self.apiKey +
+            first_item
+        )
 
         # Recommendation API URI
         recommendation_resp = requests.get(recommend_request)
 
         self.recommendations = recommendation_resp.json()
         for i in range(11):
-            self.reviews[str(self.recommendations[i]['itemId'])]
-            = self.recommendations[i]['name']
+            self.reviews[str(self.recommendations[i]['itemId'])] = (
+                self.recommendations[i]['name']
+            )
 
-            self.products[str(self.recommendations[i]['itemId'])]
-            = self.recommendations[i]['name']
+            self.products[str(self.recommendations[i]['itemId'])] = (
+                self.recommendations[i]['name']
+            )
 
     def review_text(self):
 
@@ -78,9 +87,15 @@ class CodeChallenge(object):
 
             # Long string containing first 5 reviews (if they exist)
             review = ''
-            for i in range(5):
+
+            # Try Catch for situations when theres no reviews
+            try:
+                for i in range(3):
+                    review = review + reviews_json['reviews'][i]['reviewText']
                 review = review + reviews_json['reviews'][i]['reviewText']
-            self.reviews[key] = review
+                self.reviews[key] = review
+            except IndexError:
+                self.reviews[key] = review
 
     def sentiment_analysis(self):
         for key in self.reviews:
@@ -93,8 +108,9 @@ class CodeChallenge(object):
 
             sentiment_json = req.json()
             self.sentiment_review[key] = sentiment_json['probability']['pos']
-            self.answer[self.products[key]] =
-            sentiment_json['probability']['pos']
+            self.answer[self.products[key]] = (
+                sentiment_json['probability']['pos']
+            )
 
     def print_recommendations(self):
         print 'cat'
